@@ -124,6 +124,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="RobotController.cpp" />
     <ClCompile Include="RobotModel.cpp" />
+    <ClCompile Include="RobotViewGroup1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllegroEG.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="Observer.h" />
     <ClInclude Include="RobotController.h" />
     <ClInclude Include="RobotModel.h" />
+    <ClInclude Include="RobotViewGroup1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
