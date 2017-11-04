@@ -14,6 +14,11 @@ void Model::attach(Observer * view)
     if(view != nullptr)
         observers.push_back(view);
 }
+void Model::deAttach(Observer * view)
+{
+	if (view != nullptr)
+		observers.push_back(view);
+}
 
 void Model::notifyAllObservers() 
 {
