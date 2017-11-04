@@ -7,6 +7,7 @@ class RobotModel : public Model
 {
 public:
 	RobotModel();
+	bool simulationFinished();
 	~RobotModel();
 };
 #endif
