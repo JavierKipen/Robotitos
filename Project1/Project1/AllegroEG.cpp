@@ -79,6 +79,29 @@ AllegroEG::AllegroEG()
 		error = true;
 }
 
+bool AllegroEG::keyPressed()
+{
+	bool retVal = false;
+	ALLEGRO_EVENT rawEvent;
+
+	if (al_get_next_event(EventQueue, &rawEvent))
+	{
+		if (rawEvent.type == ALLEGRO_EVENT_KEY_CHAR)
+		{
+			if (rawEvent.keyboard.keycode >= ALLEGRO_KEY_0 && rawEvent.keyboard.keycode <= ALLEGRO_KEY_9)
+			{
+				this->prevKey = rawEvent.keyboard.keycode - ALLEGRO_KEY_0;
+				retVal = true;
+			}
+		}
+	}
+	return retVal;
+}
+
+int AllegroEG::getKey()
+{
+	return prevKey;
+}
 
 AllegroEG::~AllegroEG()
 {

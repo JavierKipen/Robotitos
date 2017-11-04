@@ -20,10 +20,13 @@ class AllegroEG
 {
 public:
 	AllegroEG();
+	bool keyPressed();
+	int getKey();
 	~AllegroEG();
 private:
 	ALLEGRO_EVENT_QUEUE *EventQueue;
 	bool error;
+	int prevKey;
 };
 #endif
 
