@@ -111,10 +111,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AllegroEG.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllegroEG.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Observer.h" />
