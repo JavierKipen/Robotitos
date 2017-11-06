@@ -27,7 +27,6 @@ public:
 	list<RobotPos> getRobotsInfo();
 	unsigned int getFloorWidth();
 	unsigned int getFloorHeight();
-	bool simulationFinished();
 	~RobotModel();
 };
 #endif
