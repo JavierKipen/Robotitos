@@ -13,15 +13,6 @@
 
 
 
-
-typedef struct
-{
-	unsigned int heigth;
-	unsigned int width;
-	pos_t ubicacion; //se considera la ubicacion respecto del centro de la baldosa.
-	bool state;
-}piso_t;
-
 typedef struct
 {
 	ALLEGRO_BITMAP* b_limpia;

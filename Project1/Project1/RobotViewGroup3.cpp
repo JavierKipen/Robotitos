@@ -147,5 +147,11 @@ void RobotViewGroup3::ActualizarRobots(void)
 }
 void RobotViewGroup3::ModifyRobots()
 {
-	
+	vector<RobotPos > modelRobots = model->getRobotsInfo();
+	for (int i = 0; i < modelRobots.size(); ++i)
+	{
+		robots[i].SetPos( {modelRobots[i].x, modelRobots[i].y } );
+		robots[i].SetDir(modelRobots[i].angle);
+	}
 }
+
