@@ -7,6 +7,7 @@
 
 int main()
 {
+	srand(time(NULL));
 	allegro_startup(); //Em este ejemplo se debe inicializar allegro por fuera debido a que los eventos son de allegro.
 	RobotModel model;			//El modelo y el controlador van a ser siempre los mismos
 	RobotController controller;

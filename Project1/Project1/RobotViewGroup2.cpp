@@ -3,6 +3,7 @@
 #define G2_SCREEN_WIDTH 800
 #define G2_SCREEN_HEIGHT 600
 #define ROBOT_FACTOR_SIZE_CONST  0.5
+#define PI 3.141592
 
 
 RobotViewGroup2::RobotViewGroup2(RobotModel *model)
@@ -82,7 +83,7 @@ void RobotViewGroup2::drawRobots(RobotPos robotInfo)
 
 	al_draw_scaled_rotated_bitmap(arrow,
 		0, bitmap_height / 2, pos_x, pos_y, tile_size / bitmap_width, tile_size / bitmap_height / 2,
-		robotInfo.angle, 0);
+		robotInfo.angle*PI/180, 0);
 
 	/*** Draw robot ***/
 	al_draw_scaled_bitmap(robot,
