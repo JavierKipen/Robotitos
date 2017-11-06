@@ -176,14 +176,14 @@ void RobotViewGroup3:: ActualizarBaldosas(void)
 {
 	ModifyTiles();
 	bool state;
-	pos_t cord;
+	position_t cord;
 	for (unsigned int i = 0; i<model->getFloorHeight(); i++) //actualiza todas las baldosas segun sus estados.
 	{
 		for (unsigned int j = 0; j < model->getFloorWidth(); j++)
 		{
 
-			state = tiles[i*model->getFloorWidth()+j].GetState;
-			cord = tiles[i*model->getFloorWidth() + j].GetLocation;
+			state = tiles[i*(model->getFloorWidth())+j].GetState();
+			cord = tiles[i*(model->getFloorWidth()) + j].GetLocation();
 
 			if (state == true)
 			{
@@ -203,7 +203,7 @@ void RobotViewGroup3::ModifyTiles(void)
 	vector<TileInfo> modelTiles = model->getTileInfo();
 	for (int i = 0; i < modelTiles.size(); ++i)
 	{
-		tiles[i].SetLocation({ modelTiles[i].x, modelTiles[i].y });
+		tiles[i].SetLocation({(double) modelTiles[i].x, (double) modelTiles[i].y });
 		tiles[i].SetState(modelTiles[i].clean);
 	}
 }

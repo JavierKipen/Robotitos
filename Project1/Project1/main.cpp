@@ -13,7 +13,7 @@ int main()
 	RobotController controller;
 	controller.attachModel(&model);
 	model.startSym();			//Se iniciará la simulación
-	ALLEGRO_DISPLAY *displayAtrapaEventos = al_create_display(1000, 800);  //Este display tiene que estar para que sucedan los eventos de allegro.
+	ALLEGRO_DISPLAY *displayAtrapaEventos = al_create_display(1000, 800);  //Este display tiene que estar para que se puedan generar eventos de teclado de allegro.
 	while (!model.simEnded()) //Mientras que no se haya terminado la simulación
 	{
 		model.tick();				//Se moverá una posición los robotitos

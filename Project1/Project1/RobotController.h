@@ -5,6 +5,7 @@
 #include "AllegroEG.h"
 #include "RobotViewGroup1.h"
 #include "RobotViewGroup2.h"
+#include "RobotViewGroup3.h"
 typedef enum {R_ALLEGRO_EVENT, R_NETWORK_EVENT} EventType;
 
 #define VIEWS_COUNT 3

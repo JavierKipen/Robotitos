@@ -46,7 +46,7 @@ void RobotController::parseKeyboardEvent(void *Event)
 				allViews[nmbrOfView] = new RobotViewGroup2(model);
 				break;
 			case 2:
-				//allViews[nmbrOfView] = new RobotViewGroup3;
+				allViews[nmbrOfView] = new RobotViewGroup3(model);
 				break;
 			}
 			model->attach(allViews[nmbrOfView]); //Se lo attachea al modelo para que pueda updatear al mismo

@@ -11,12 +11,12 @@ bool GTile3::GetState(void)
 	return tile.state;
 }
 
-pos_t GTile3::GetLocation()
+position_t GTile3::GetLocation()
 {
 	return tile.ubicacion;
 }
 
-void GTile3::SetLocation(pos_t newPos)
+void GTile3::SetLocation(position_t newPos)
 {
 	tile.ubicacion = newPos;
 }
