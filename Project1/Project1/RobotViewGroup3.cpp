@@ -10,7 +10,6 @@
 #define FONT_COLOR "hotpink"
 #define REFERENCE_COLOR "lightblue"
 #define VECTOR_COLOR "red"
-#define FONT_FILE "../Fonts/Starjedi.ttf"	
 
 
 
@@ -19,20 +18,31 @@
 #define ROBOT "../Imagenes/robot.png"
 #define ROBOT_SIZE(u) (((u)/2.0))
 #define RADIAN(x) (((x)*(M_PI))/180.0)
-#define UNIT 800 /*asumo que este era el width del display, poco claro en el codigo*/
+#define UNIT 800 /*ni en el codigo ni en el comentario del trabajo se explica de donde se obtiene
+o que es este numero, se deja asi al igual que el resto de los magic numbers*/
+
+#define DISP_WIDTH3 1080
+#define	DISP_HEIGHT3 900
+
 
 using namespace std;
 
 RobotViewGroup3::RobotViewGroup3(RobotModel *model)
 {
 	initOk = false;
+	display = nullptr;
 	if (model != nullptr)
 	{
 		if (attachModel(model))
 		{
 			unit = (UNIT) / (((double)model->getFloorWidth() + (double)model->getFloorHeight()) / 2.0);
-			if(SetImages())
-				initOk = true;
+			if (SetImages())
+			{
+				display = al_create_display(DISP_WIDTH3,DISP_HEIGHT3);
+				if (display != nullptr)
+					initOk = true;
+				else {}
+			}
 			else{}
 		}
 		else{}
@@ -53,8 +63,13 @@ bool RobotViewGroup3::attachModel(RobotModel * model)
 
 void RobotViewGroup3::update()
 {
+	al_set_target_backbuffer(display);
+	al_clear_to_color(al_map_rgb(255, 255, 255));
+	ActualizarBaldosas();
+	ActualizarBaldosas();
 
 
+	al_flip_display();
 }
 RobotViewGroup3::~RobotViewGroup3()
 {
@@ -113,6 +128,7 @@ ALLEGRO_BITMAP * RobotViewGroup3::load_image_at_size(char* image_name, int size_
 
 void RobotViewGroup3::ActualizarRobots(void)
 {
+	ModifyRobots();
 	pos_t cord = { 0.0 , 0.0 };
 	pos_t vector = { 0.0 , 0.0 };
 	pos_t vector_head1 = { 0.0 , 0.0 }; //Representan los tres vertices del triangulo que forma
@@ -145,7 +161,7 @@ void RobotViewGroup3::ActualizarRobots(void)
 		//Dibuja el vector que indica la direccion del robot.Tiene modulo UNIT y parte del centro del robot.
 	}
 }
-void RobotViewGroup3::ModifyRobots()
+void RobotViewGroup3::ModifyRobots(void)
 {
 	vector<RobotPos > modelRobots = model->getRobotsInfo();
 	for (int i = 0; i < modelRobots.size(); ++i)
@@ -155,3 +171,39 @@ void RobotViewGroup3::ModifyRobots()
 	}
 }
 
+
+void RobotViewGroup3:: ActualizarBaldosas(void)
+{
+	ModifyTiles();
+	bool state;
+	pos_t cord;
+	for (unsigned int i = 0; i<model->getFloorHeight(); i++) //actualiza todas las baldosas segun sus estados.
+	{
+		for (unsigned int j = 0; j < model->getFloorWidth(); j++)
+		{
+
+			state = tiles[i*model->getFloorWidth()+j].GetState;
+			cord = tiles[i*model->getFloorWidth() + j].GetLocation;
+
+			if (state == true)
+			{
+				al_draw_bitmap(imgs.b_limpia, cord.x, cord.y, 0); //dibuja la baldosa limpia.
+			}
+			else
+			{
+				al_draw_bitmap(imgs.b_sucia, cord.x, cord.y, 0); //dibuja la baldosa sucia.
+			}
+		}
+
+	}
+}
+
+void RobotViewGroup3::ModifyTiles(void)
+{
+	vector<TileInfo> modelTiles = model->getTileInfo();
+	for (int i = 0; i < modelTiles.size(); ++i)
+	{
+		tiles[i].SetLocation({ modelTiles[i].x, modelTiles[i].y });
+		tiles[i].SetState(modelTiles[i].clean);
+	}
+}

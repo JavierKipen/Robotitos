@@ -45,7 +45,7 @@
     <ClCompile Include="GRobot3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GTile.cpp">
+    <ClCompile Include="GTile3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,7 +83,7 @@
     <ClInclude Include="GRobot3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gtile.h">
+    <ClInclude Include="GTile3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

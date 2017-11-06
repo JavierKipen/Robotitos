@@ -130,7 +130,7 @@
     <ClCompile Include="RobotViewGroup2.cpp" />
     <ClCompile Include="RobotViewGroup3.cpp" />
     <ClCompile Include="simulation.c" />
-    <ClCompile Include="GTile.cpp" />
+    <ClCompile Include="GTile3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllegroEG.h" />
@@ -144,7 +144,7 @@
     <ClInclude Include="RobotViewGroup2.h" />
     <ClInclude Include="RobotViewGroup3.h" />
     <ClInclude Include="simulation.h" />
-    <ClInclude Include="Gtile.h" />
+    <ClInclude Include="GTile3.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

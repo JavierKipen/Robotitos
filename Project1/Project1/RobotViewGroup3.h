@@ -2,6 +2,7 @@
 #include "Observer.h"
 #include "RobotModel.h"
 #include "GRobot3.h"
+#include "GTile3.h"
 #include <vector>
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
@@ -35,12 +36,17 @@ private:
 	RobotViewGroup3();
 	bool attachModel(RobotModel *model);
 	bool SetImages(void);
+
 	void ModifyRobots();
 	void ActualizarRobots(void);
-	ALLEGRO_BITMAP * load_image_at_size(char* image_name, int size_x, int size_y);
+	void ModifyTiles(void);
+	void ActualizarBaldosas(void);
+	
+	ALLEGRO_BITMAP* load_image_at_size(char* image_name, int size_x, int size_y);
+	ALLEGRO_DISPLAY *display;
 	RobotModel *model;
 	std::vector<GRobot3> robots;
-	std::vector<piso_t> tiles;
+	std::vector<GTile3> tiles;
 	imagenes_t imgs;
 };
 
