@@ -79,6 +79,15 @@
     <Allegro_AddonFont>true</Allegro_AddonFont>
     <Allegro_AddonColor>true</Allegro_AddonColor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Allegro_AddonImage>true</Allegro_AddonImage>
+    <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
+    <Allegro_AddonAudio>true</Allegro_AddonAudio>
+    <Allegro_AddonAcodec>true</Allegro_AddonAcodec>
+    <Allegro_AddonColor>true</Allegro_AddonColor>
+    <Allegro_AddonTTF>true</Allegro_AddonTTF>
+    <Allegro_AddonFont>true</Allegro_AddonFont>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -151,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="arrow.png" />
+    <Image Include="Imagenes3\dirtytile.png" />
+    <Image Include="Imagenes3\limpio2.png" />
+    <Image Include="Imagenes3\robot.png" />
     <Image Include="Images\cleanTile.png" />
     <Image Include="Images\dirtyTile.png" />
     <Image Include="Images\robot.png" />

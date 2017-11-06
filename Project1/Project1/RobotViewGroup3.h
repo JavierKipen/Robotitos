@@ -1,5 +1,6 @@
 #pragma once
 #include "Observer.h"
+#include <iostream>
 #include "RobotModel.h"
 #include "GRobot3.h"
 #include "GTile3.h"
@@ -45,8 +46,9 @@ private:
 	ALLEGRO_BITMAP* load_image_at_size(char* image_name, int size_x, int size_y);
 	ALLEGRO_DISPLAY *display;
 	RobotModel *model;
-	std::vector<GRobot3> robots;
-	std::vector<GTile3> tiles;
+	GRobot3* robots;
+	GTile3* tiles;
 	imagenes_t imgs;
+	unsigned int robotNumber;
 };
 

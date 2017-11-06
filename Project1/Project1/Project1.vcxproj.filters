@@ -112,5 +112,14 @@
     <Image Include="Images\robot.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Imagenes3\dirtytile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Imagenes3\limpio2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Imagenes3\robot.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
