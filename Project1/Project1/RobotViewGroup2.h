@@ -20,6 +20,7 @@ private:
 	double tile_size;
 	void drawRobots(RobotPos robotInfo);
 	bool loadBitmaps();
+	void destroyBitmaps();
 	unsigned int floorHeight;
 	unsigned int floorWidth;
 	ALLEGRO_DISPLAY *display;
