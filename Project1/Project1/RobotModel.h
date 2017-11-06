@@ -11,7 +11,7 @@ using namespace std;
 #define DEFAULT_FLOOR_W 20
 #define DEFAULT_FLOOR_H 20
 	
-
+/*Estructuras definidas comunes para todos los views*/
 typedef struct
 {
 	double x;
@@ -24,14 +24,16 @@ typedef struct
 	unsigned int y;
 	bool clean;
 }TileInfo;
+/****************************************************/
 
 class RobotModel : public Model
 {
 public:
 	RobotModel();
-	void startSym();
-	void tick();
-	bool simEnded();
+	void startSym();	//Para inicializar toda la simulación.
+	void tick();		//Se calcula un paso de la simulacion
+	bool simEnded();	//Devuelve si la simulación termino
+	/*Funciones para entregarle datos a los observadores*/
 	vector<TileInfo> getTileInfo();
 	vector<RobotPos> getRobotsInfo();
 	unsigned int getFloorWidth();

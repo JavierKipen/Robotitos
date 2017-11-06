@@ -1,5 +1,8 @@
 #include "Model.h"
 
+#include <algorithm>
+using namespace std;
+
 Model::Model() {
 }
 
@@ -16,8 +19,9 @@ void Model::attach(Observer * view)
 }
 void Model::deAttach(Observer * view)
 {
-	if (view != nullptr)
-		observers.push_back(view);
+	list<Observer *>::iterator it = find(observers.begin(),observers.end(),view);
+	if (it != observers.end())
+		observers.erase(it);
 }
 
 void Model::notifyAllObservers() 

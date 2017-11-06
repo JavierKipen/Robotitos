@@ -77,6 +77,7 @@
     <Allegro_AddonAudio>true</Allegro_AddonAudio>
     <Allegro_AddonAcodec>true</Allegro_AddonAcodec>
     <Allegro_AddonFont>true</Allegro_AddonFont>
+    <Allegro_AddonColor>true</Allegro_AddonColor>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,6 +121,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AllegroEG.cpp" />
+    <ClCompile Include="GRobot3.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="RobotController.cpp" />
@@ -132,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="AllegroEG.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="GRobot3.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="RobotController.h" />

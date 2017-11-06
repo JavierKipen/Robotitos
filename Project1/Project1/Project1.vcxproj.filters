@@ -42,6 +42,9 @@
     <ClCompile Include="simulation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GRobot3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="simulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GRobot3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

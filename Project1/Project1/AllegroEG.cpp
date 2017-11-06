@@ -70,7 +70,7 @@ void allegro_shut_down(void)
 
 AllegroEG::AllegroEG()
 {
-	this->EventQueue = al_create_event_queue();
+	this->EventQueue = al_create_event_queue(); //Creamos una event queue donde se guardarán nuestros eventos
 	if (EventQueue != nullptr)
 	{
 		al_register_event_source(EventQueue, al_get_keyboard_event_source());
@@ -88,7 +88,7 @@ bool AllegroEG::keyPressed()
 	{
 		if (rawEvent.type == ALLEGRO_EVENT_KEY_CHAR)
 		{
-			if (rawEvent.keyboard.keycode >= ALLEGRO_KEY_0 && rawEvent.keyboard.keycode <= ALLEGRO_KEY_9)
+			if (rawEvent.keyboard.keycode >= ALLEGRO_KEY_0 && rawEvent.keyboard.keycode <= ALLEGRO_KEY_2) //Solo nos interesan las teclas 0, 1 y 2
 			{
 				this->prevKey = rawEvent.keyboard.keycode - ALLEGRO_KEY_0;
 				retVal = true;

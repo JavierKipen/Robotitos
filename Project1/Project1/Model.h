@@ -13,9 +13,9 @@ public:
     void attach(Observer * view);
     void deAttach(Observer * view);
 protected:
-    void notifyAllObservers();
+    void notifyAllObservers(); //Donde se llamará todos los observers a updatearse
 private:
-    std::list<Observer *> observers;
+    std::list<Observer *> observers;  //Todos los views que estaràn pendientes de este modelo
 
 };
 

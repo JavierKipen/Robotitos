@@ -20,8 +20,8 @@ class AllegroEG
 {
 public:
 	AllegroEG();
-	bool keyPressed();
-	int getKey();
+	bool keyPressed();	//Si se presionó una tecla útil devolvera un 1
+	int getKey();		//Devuelve aquella tecla presionada
 	~AllegroEG();
 private:
 	ALLEGRO_EVENT_QUEUE *EventQueue;
