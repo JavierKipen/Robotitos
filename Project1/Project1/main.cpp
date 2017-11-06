@@ -9,7 +9,7 @@ int main()
 	RobotModel model;
 	RobotController controller;
 	controller.attachModel(&model);
-	while (!model.simulationFinished())
+	while (!model.simEnded())
 	{
 		if (controller.hayEvento())
 			controller.parseEvento();

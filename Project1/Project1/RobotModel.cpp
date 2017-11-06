@@ -4,9 +4,18 @@
 
 RobotModel::RobotModel()
 {
+	sim = NULL;
+	RobotCount = DEFAULT_ROBOT_N;
+	Height = DEFAULT_FLOOR_H;
+	Width = DEFAULT_FLOOR_W;
 }
 
-bool RobotModel::simulationFinished()
+void RobotModel::startSym()
+{
+	sim = createSim(RobotCount, Height, Width);
+}
+
+bool RobotModel::simEnded()
 {
 	return 0;
 }

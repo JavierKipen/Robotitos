@@ -2,6 +2,15 @@
 #define ROBOTMODEL_H
 
 #include "Model.h"
+extern "C" {
+#include "simulation.h"
+}
+
+using namespace std;
+#define DEFAULT_ROBOT_N 20
+#define DEFAULT_FLOOR_W 20
+#define DEFAULT_FLOOR_H 20
+	
 
 typedef struct
 {
@@ -28,6 +37,11 @@ public:
 	unsigned int getFloorWidth();
 	unsigned int getFloorHeight();
 	~RobotModel();
+private:
+	simType * sim;
+	unsigned int RobotCount;
+	unsigned int Height;
+	unsigned int Width;
 };
 #endif
 
