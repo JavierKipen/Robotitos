@@ -12,6 +12,7 @@ int main()
 	RobotController controller;
 	controller.attachModel(&model);
 	model.startSym();
+	ALLEGRO_DISPLAY *displayAtrapaEventos = al_create_display(1000, 800);
 	while (!model.simEnded())
 	{
 		model.tick();

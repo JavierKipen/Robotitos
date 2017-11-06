@@ -78,4 +78,18 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="arrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="limpia.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="robot.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="sucia.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

@@ -19,15 +19,16 @@ RobotViewGroup2::RobotViewGroup2(RobotModel *model)
 
 void RobotViewGroup2::update()
 {
+	al_clear_to_color(al_map_rgb(255, 255, 255));
 	vector<TileInfo> tileData = model->getTileInfo();
 	vector<RobotPos> RobotPos = model->getRobotsInfo();
 
 	double height = al_get_bitmap_width(clean_tile);
 	double width = al_get_bitmap_height(clean_tile);
-	tile_size = min((double)screen_width / (double)floorWidth, (double)screen_height / (double)height);
+	tile_size = min((double)screen_width / (double)floorWidth, (double)screen_height / (double)floorHeight);
 
-	for (int i = 0; i < (int)screen_height; i++) {
-		for (int j = 0; j < (int)screen_width; j++) {
+	for (int i = 0; i < (int)floorHeight; i++) {
+		for (int j = 0; j < (int)floorWidth; j++) {
 			double new_size = tile_size;
 			double pos_y = screen_height / 2.0 - tile_size*floorHeight / 2.0 + (double)i * tile_size + tile_size / 2;
 			double pos_x = screen_width / 2.0 - tile_size*floorWidth / 2.0 + (double)j * tile_size + tile_size / 2;
@@ -41,7 +42,7 @@ void RobotViewGroup2::update()
 	for (int i = 0; i < (int)RobotPos.size(); i++) {
 		drawRobots(RobotPos[i]);
 	}
-
+	al_flip_display();
 }
 
 void RobotViewGroup2::drawRobots(RobotPos robotInfo)

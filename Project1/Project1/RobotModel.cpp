@@ -24,6 +24,7 @@ unsigned int RobotModel::getFloorHeight()
 void RobotModel::tick()
 {
 	tilesCleaned += simulate(sim, &tickCount);
+	notifyAllObservers();
 }
 bool RobotModel::simEnded()
 {
