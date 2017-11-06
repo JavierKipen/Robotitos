@@ -27,7 +27,7 @@ void RobotModel::tick()
 }
 bool RobotModel::simEnded()
 {
-	return (tilesCleaned  < (sim->height)*(sim->width));
+	return !(tilesCleaned  < (sim->height)*(sim->width));
 }
 unsigned int RobotModel::getFloorWidth()
 {
