@@ -91,5 +91,14 @@
     <Image Include="sucia.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Images\cleanTile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\dirtyTile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Images\robot.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

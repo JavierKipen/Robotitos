@@ -40,7 +40,7 @@ void RobotController::parseKeyboardEvent(void *Event)
 			switch(nmbrOfView)
 			{
 			case 0:
-				//allViews[nmbrOfView] = new RobotViewGroup1;
+				allViews[nmbrOfView] = new RobotViewGroup1(model);
 				break;
 			case 1:
 				allViews[nmbrOfView] = new RobotViewGroup2(model);

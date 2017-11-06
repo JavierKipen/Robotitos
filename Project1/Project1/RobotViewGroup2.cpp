@@ -19,6 +19,7 @@ RobotViewGroup2::RobotViewGroup2(RobotModel *model)
 
 void RobotViewGroup2::update()
 {
+	al_set_target_backbuffer(display);
 	al_clear_to_color(al_map_rgb(255, 255, 255));
 	vector<TileInfo> tileData = model->getTileInfo();
 	vector<RobotPos> RobotPos = model->getRobotsInfo();

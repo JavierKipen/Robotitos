@@ -146,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="arrow.png" />
+    <Image Include="Images\cleanTile.png" />
+    <Image Include="Images\dirtyTile.png" />
+    <Image Include="Images\robot.png" />
     <Image Include="limpia.png" />
     <Image Include="robot.png" />
     <Image Include="sucia.png" />
