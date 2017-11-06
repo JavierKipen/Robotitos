@@ -39,9 +39,11 @@ public:
 	~RobotModel();
 private:
 	simType * sim;
-	unsigned int RobotCount;
-	unsigned int Height;
-	unsigned int Width;
+	unsigned int robotCount;
+	unsigned int height;
+	unsigned int width;
+	unsigned int tickCount;
+	unsigned int tilesCleaned;
 };
 #endif
 
