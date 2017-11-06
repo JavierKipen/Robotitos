@@ -21,10 +21,6 @@ unsigned int RobotModel::getFloorHeight()
 {
 	return height;
 }
-unsigned int RobotModel::getFloorWidth()
-{
-	return width;
-}
 void RobotModel::tick()
 {
 	tilesCleaned += simulate(sim, &tickCount);
@@ -39,7 +35,16 @@ unsigned int RobotModel::getFloorWidth()
 }
 list<TileInfo> RobotModel::getTileInfo()
 {
-
+	TileInfo aux;
+	list<TileInfo> retVal;
+	for (unsigned int i = 0; i < width*height; i++)
+	{
+		aux.clean = sim->piso->baldosas[i];
+		aux.x = i%width;
+		aux.y = i/width;
+		retVal.push_back(aux);
+	}
+	return retVal;
 	
 }
 list<RobotPos> RobotModel::getRobotsInfo()
