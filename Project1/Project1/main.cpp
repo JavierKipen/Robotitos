@@ -17,7 +17,7 @@ int main()
 		model.tick();
 		if (controller.hayEvento())
 			controller.parseEvento();
-		std::this_thread::sleep_for(1s);
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		//list<RobotPos> robots= model.getRobotsInfo();
 		//list<TileInfo> tileinfo = model.getTileInfo();
 	}

@@ -1,6 +1,6 @@
 #ifndef ROBOTMODEL_H
 #define ROBOTMODEL_H
-
+#include <vector>
 #include "Model.h"
 extern "C" {
 #include "simulation.h"
@@ -32,8 +32,8 @@ public:
 	void startSym();
 	void tick();
 	bool simEnded();
-	list<TileInfo> getTileInfo();
-	list<RobotPos> getRobotsInfo();
+	vector<TileInfo> getTileInfo();
+	vector<RobotPos> getRobotsInfo();
 	unsigned int getFloorWidth();
 	unsigned int getFloorHeight();
 	~RobotModel();

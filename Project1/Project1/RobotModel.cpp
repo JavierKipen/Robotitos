@@ -33,10 +33,10 @@ unsigned int RobotModel::getFloorWidth()
 {
 	return width;
 }
-list<TileInfo> RobotModel::getTileInfo()
+vector<TileInfo> RobotModel::getTileInfo()
 {
 	TileInfo aux;
-	list<TileInfo> retVal;
+	vector<TileInfo> retVal;
 	for (unsigned int i = 0; i < width*height; i++)
 	{
 		aux.clean = sim->piso->baldosas[i];
@@ -47,10 +47,10 @@ list<TileInfo> RobotModel::getTileInfo()
 	return retVal;
 	
 }
-list<RobotPos> RobotModel::getRobotsInfo()
+vector<RobotPos> RobotModel::getRobotsInfo()
 {
 	RobotPos aux;
-	list<RobotPos> retVal;
+	vector<RobotPos> retVal;
 	for (unsigned int i = 0; i < robotCount; i++)
 	{
 		robotType robot=sim->robots[i];
