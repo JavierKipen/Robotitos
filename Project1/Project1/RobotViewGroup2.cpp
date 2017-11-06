@@ -102,8 +102,15 @@ bool RobotViewGroup2::loadBitmaps()
 		retVal = true;
 	return retVal;
 }
-
+void RobotViewGroup2::destroyBitmaps()
+{
+	al_destroy_bitmap(dirty_tile);
+	al_destroy_bitmap(clean_tile);
+	al_destroy_bitmap(robot);
+	al_destroy_bitmap(arrow);
+}
 RobotViewGroup2::~RobotViewGroup2()
 {
 	al_destroy_display(display);
+	destroyBitmaps();
 }
