@@ -148,9 +148,9 @@ void RobotViewGroup3::ActualizarRobots(void)
 		angle = RADIAN(angle);
 		
 		//al_draw_scaled_bitmap(imgs.robot,
-			0, 0, al_get_bitmap_width(imgs.robot), al_get_bitmap_height(imgs.robot),
-			cord.x*unit, cord.y*unit,
-			ROBOT_SIZE(unit), ROBOT_SIZE(unit), 0);
+			//0, 0, al_get_bitmap_width(imgs.robot), al_get_bitmap_height(imgs.robot),
+			//cord.x*unit, cord.y*unit,
+			//ROBOT_SIZE(unit), ROBOT_SIZE(unit), 0);
 		al_draw_bitmap(imgs.robot, cord.x*unit, cord.y*unit, 0); //dibuja el robot en su posicion del display
 
 		//(vector.x) = (cord.x*unit) + (unit)*cos(angle);
