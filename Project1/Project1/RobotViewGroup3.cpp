@@ -1,8 +1,7 @@
 #include "RobotViewGroup3.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
-
-
+#define ALLEGRO_STATICLINK
 
 #define AXIS_COLOR "white"
 #define BAR_COLOR "green"
@@ -13,9 +12,9 @@
 
 
 
-#define BALDOSA_SUCIA "Imagenes3/dirtytile.png"
-#define BALDOSA_LIMPIA "Imagenes3/limpio2.png"
-#define ROBOT "Imagenes3/robot.png"
+#define BALDOSA_SUCIA /*"Images/dirtyTile.png"//*/"Imagenes3/dirtytile.png"
+#define BALDOSA_LIMPIA /*"Images/cleanTile.png"//*/"Imagenes3/limpio2.png"
+#define ROBOT /*"Images/robot.png"//*/"Imagenes3/robot.png"
 #define ROBOT_SIZE(u) (((u)/2.0))
 #define RADIAN(x) (((x)*(M_PI))/180.0)
 #define UNIT 800 /*ni en el codigo ni en el comentario del trabajo se explica de donde se obtiene
@@ -70,17 +69,18 @@ void RobotViewGroup3::update()
 	al_clear_to_color(al_map_rgb(255, 255, 255));
 	ActualizarBaldosas();
 	ActualizarRobots();
-
-
 	al_flip_display();
 }
 RobotViewGroup3::~RobotViewGroup3()
 {
 	if (initOk)
 	{
+		al_destroy_display(display);
 		al_destroy_bitmap(imgs.b_limpia);
 		al_destroy_bitmap(imgs.b_sucia);
 		al_destroy_bitmap(imgs.robot);
+		delete[] tiles;
+		delete[] robots;
 	}
 }
 
@@ -90,7 +90,9 @@ bool RobotViewGroup3::SetImages(void)
 	imgs.b_limpia= load_image_at_size(BALDOSA_LIMPIA, unit, unit);
 	imgs.b_sucia= load_image_at_size(BALDOSA_SUCIA, unit, unit);
 	imgs.robot= load_image_at_size(ROBOT, ROBOT_SIZE(unit), ROBOT_SIZE(unit));
-
+	/*imgs.b_limpia = al_load_bitmap(BALDOSA_LIMPIA);
+	imgs.b_sucia = al_load_bitmap(BALDOSA_SUCIA);
+	imgs.robot = al_load_bitmap(ROBOT);*/
 
 	if ((imgs.b_limpia != nullptr) && (imgs.b_sucia != nullptr) && (imgs.robot != nullptr))
 		retVal =true;
@@ -133,10 +135,10 @@ void RobotViewGroup3::ActualizarRobots(void)
 {
 	ModifyRobots();
 	pos_t cord = { 0.0 , 0.0 };
-	pos_t vector = { 0.0 , 0.0 };
-	pos_t vector_head1 = { 0.0 , 0.0 }; //Representan los tres vertices del triangulo que forma
-	pos_t vector_head2 = { 0.0 , 0.0 }; //la cabeza del vector.
-	pos_t vector_head3 = { 0.0 , 0.0 };
+	//pos_t vector = { 0.0 , 0.0 };
+	//pos_t vector_head1 = { 0.0 , 0.0 }; //Representan los tres vertices del triangulo que forma
+	//pos_t vector_head2 = { 0.0 , 0.0 }; //la cabeza del vector.
+	//pos_t vector_head3 = { 0.0 , 0.0 };
 	double angle = 0.0;
 
 	for (unsigned int i = 0; i < robotNumber; i++)
@@ -144,24 +146,29 @@ void RobotViewGroup3::ActualizarRobots(void)
 		cord = robots[i].GetPos();
 		angle = robots[i].GetDir();
 		angle = RADIAN(angle);
-		al_draw_bitmap(imgs.robot, cord.x*unit, cord.y*unit, 0); //dibuja el robot en su posicion del display
+		
+		al_draw_scaled_bitmap(imgs.robot,
+			0, 0, al_get_bitmap_width(imgs.robot), al_get_bitmap_height(imgs.robot),
+			cord.x*unit, cord.y*unit,
+			ROBOT_SIZE(unit), ROBOT_SIZE(unit), 0);
+		//al_draw_bitmap(imgs.robot, cord.x*unit, cord.y*unit, 0); //dibuja el robot en su posicion del display
 
-		(vector.x) = (cord.x*unit) + (unit)*cos(angle);
-		(vector.y) = (cord.y*unit) - (unit)*sin(angle);
+		//(vector.x) = (cord.x*unit) + (unit)*cos(angle);
+		//(vector.y) = (cord.y*unit) - (unit)*sin(angle);
 
-		al_draw_line((cord.x*unit) + (ROBOT_SIZE(unit)) / 2.0, (cord.y*unit) + (ROBOT_SIZE(unit)) / 2.0, vector.x, vector.y, al_color_name(VECTOR_COLOR), 1.0);
+		//al_draw_line((cord.x*unit) + (ROBOT_SIZE(unit)) / 2.0, (cord.y*unit) + (ROBOT_SIZE(unit)) / 2.0, vector.x, vector.y, al_color_name(VECTOR_COLOR), 1.0);
 
-		vector_head1.x = (vector.x) - ((unit) / 10.0)*cos(M_PI / 4.0);
-		vector_head1.y = (vector.y) - ((unit) / 10.0)*sin(M_PI / 4.0);
+		//vector_head1.x = (vector.x) - ((unit) / 10.0)*cos(M_PI / 4.0);
+		//vector_head1.y = (vector.y) - ((unit) / 10.0)*sin(M_PI / 4.0);
 
-		vector_head2.x = (vector.x) + ((unit) / 10.0)*cos(M_PI / 4.0);
-		vector_head2.y = (vector.y) + ((unit) / 10.0)*sin(M_PI / 4.0);
+		//vector_head2.x = (vector.x) + ((unit) / 10.0)*cos(M_PI / 4.0);
+		//vector_head2.y = (vector.y) + ((unit) / 10.0)*sin(M_PI / 4.0);
 
-		vector_head3.x = (vector.x) + ((unit) / 10.0)*cos(angle);
-		vector_head3.y = (vector.y) - ((unit) / 10.0)*sin(angle);
+		//vector_head3.x = (vector.x) + ((unit) / 10.0)*cos(angle);
+		//vector_head3.y = (vector.y) - ((unit) / 10.0)*sin(angle);
 
-		al_draw_filled_triangle(vector_head1.x, vector_head1.y, vector_head2.x, vector_head2.y, vector_head3.x, vector_head3.y, al_color_name(VECTOR_COLOR));
-		//Dibuja el vector que indica la direccion del robot.Tiene modulo UNIT y parte del centro del robot.
+		//al_draw_filled_triangle(vector_head1.x, vector_head1.y, vector_head2.x, vector_head2.y, vector_head3.x, vector_head3.y, al_color_name(VECTOR_COLOR));
+		////Dibuja el vector que indica la direccion del robot.Tiene modulo UNIT y parte del centro del robot.
 	}
 }
 void RobotViewGroup3::ModifyRobots(void)
@@ -180,20 +187,30 @@ void RobotViewGroup3:: ActualizarBaldosas(void)
 	ModifyTiles();
 	bool state;
 	position_t cord;
-	for (unsigned int i = 0; i<model->getFloorHeight(); i++) //actualiza todas las baldosas segun sus estados.
+	unsigned int height = model->getFloorHeight();
+	unsigned int width = model->getFloorWidth();
+	for (unsigned int i = 0; i<height; i++) //actualiza todas las baldosas segun sus estados.
 	{
-		for (unsigned int j = 0; j < model->getFloorWidth(); j++)
+		for (unsigned int j = 0; j < width; j++)
 		{
 
-			state = tiles[i*(model->getFloorWidth())+j].GetState();
-			cord = tiles[i*(model->getFloorWidth()) + j].GetLocation();
+			state = tiles[i*(width)+j].GetState();
+			cord = tiles[i*(width) + j].GetLocation();
 
 			if (state == true)
 			{
+				/*al_draw_scaled_bitmap(imgs.b_limpia,
+					0, 0, al_get_bitmap_width(imgs.b_limpia), al_get_bitmap_height(imgs.b_limpia),
+					cord.x*unit, cord.y*unit,
+					unit, unit, 0);*/
 				al_draw_bitmap(imgs.b_limpia, cord.x *unit, cord.y *unit, 0); //dibuja la baldosa limpia.
 			}
 			else
 			{
+				/*al_draw_scaled_bitmap(imgs.b_sucia,
+					0, 0, al_get_bitmap_width(imgs.b_sucia), al_get_bitmap_height(imgs.b_sucia),
+					cord.x*unit, cord.y*unit,
+					unit, unit, 0);*/
 				al_draw_bitmap(imgs.b_sucia, cord.x*unit, cord.y*unit, 0); //dibuja la baldosa sucia.
 			}
 		}
