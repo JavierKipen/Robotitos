@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 #include <chrono>
 #include <thread>
 #include "AllegroEG.h"
@@ -23,5 +24,8 @@ int main()
 	}
 
 	allegro_shut_down();
+	cout << "press Enter to finish" << endl;
+	getchar();
+	
 	return 0;
 }

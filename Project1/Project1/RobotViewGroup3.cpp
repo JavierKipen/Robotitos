@@ -8,7 +8,7 @@
 #define BACKGROUND_COLOR "black"
 #define FONT_COLOR "hotpink"
 #define REFERENCE_COLOR "lightblue"
-#define VECTOR_COLOR "red"
+#define VECTOR_COLOR "black"//"red"
 
 
 
@@ -17,8 +17,7 @@
 #define ROBOT /*"Images/robot.png"//*/"Imagenes3/robot.png"
 #define ROBOT_SIZE(u) (((u)/2.0))
 #define RADIAN(x) (((x)*(M_PI))/180.0)
-#define UNIT 800 /*ni en el codigo ni en el comentario del trabajo se explica de donde se obtiene
-o que es este numero, se deja asi al igual que el resto de los magic numbers*/
+#define UNIT 800
 
 
 
@@ -136,10 +135,10 @@ void RobotViewGroup3::ActualizarRobots(void)
 {
 	ModifyRobots();
 	pos_t cord = { 0.0 , 0.0 };
-	//pos_t vector = { 0.0 , 0.0 };
-	//pos_t vector_head1 = { 0.0 , 0.0 }; //Representan los tres vertices del triangulo que forma
-	//pos_t vector_head2 = { 0.0 , 0.0 }; //la cabeza del vector.
-	//pos_t vector_head3 = { 0.0 , 0.0 };
+	pos_t vector = { 0.0 , 0.0 };
+	pos_t vector_head1 = { 0.0 , 0.0 }; //Representan los tres vertices del triangulo que forma
+	pos_t vector_head2 = { 0.0 , 0.0 }; //la cabeza del vector.
+	pos_t vector_head3 = { 0.0 , 0.0 };
 	double angle = 0.0;
 
 	for (unsigned int i = 0; i < robotNumber; i++)
@@ -151,22 +150,22 @@ void RobotViewGroup3::ActualizarRobots(void)
 	
 		al_draw_bitmap(imgs.robot, cord.x*unit, cord.y*unit, 0); //dibuja el robot en su posicion del display
 
-/*		(vector.x) = (cord.x*unit) + (unit)*cos(angle);
-		(vector.y) = (cord.y*unit) - (unit)*sin(angle);
+		//(vector.x) = (cord.x*unit) + (unit)*cos(angle);
+		//(vector.y) = (cord.y*unit) - (unit)*sin(angle);
 
-		al_draw_line((cord.x*unit) + (ROBOT_SIZE(unit)) / 2.0, (cord.y*unit) + (ROBOT_SIZE(unit)) / 2.0, vector.x, vector.y, al_color_name(VECTOR_COLOR), 1.0);
+		//al_draw_line((cord.x*unit) + (ROBOT_SIZE(unit)) / 2.0, (cord.y*unit) + (ROBOT_SIZE(unit)) / 2.0, vector.x, vector.y, al_color_name(VECTOR_COLOR), 2.0);
 
-		vector_head1.x = (vector.x) - ((unit) / 10.0)*cos(M_PI / 4.0);
-		vector_head1.y = (vector.y) - ((unit) / 10.0)*sin(M_PI / 4.0);
+		//vector_head1.x = (vector.x) - ((unit) / 10.0)*cos(M_PI / 4.0);
+		//vector_head1.y = (vector.y) - ((unit) / 10.0)*sin(M_PI / 4.0);
 
-		vector_head2.x = (vector.x) + ((unit) / 10.0)*cos(M_PI / 4.0);
-		vector_head2.y = (vector.y) + ((unit) / 10.0)*sin(M_PI / 4.0);
+		//vector_head2.x = (vector.x) + ((unit) / 10.0)*cos(M_PI / 4.0);
+		//vector_head2.y = (vector.y) + ((unit) / 10.0)*sin(M_PI / 4.0);
 
-		vector_head3.x = (vector.x) + ((unit) / 10.0)*cos(angle);
-		vector_head3.y = (vector.y) - ((unit) / 10.0)*sin(angle);
+		//vector_head3.x = (vector.x) + ((unit) / 10.0)*cos(angle);
+		//vector_head3.y = (vector.y) - ((unit) / 10.0)*sin(angle);
 
-		al_draw_filled_triangle(vector_head1.x, vector_head1.y, vector_head2.x, vector_head2.y, vector_head3.x, vector_head3.y, al_color_name(VECTOR_COLOR));
-		*/////Dibuja el vector que indica la direccion del robot.Tiene modulo UNIT y parte del centro del robot.
+		//al_draw_filled_triangle(vector_head1.x, vector_head1.y, vector_head2.x, vector_head2.y, vector_head3.x, vector_head3.y, al_color_name(VECTOR_COLOR));
+		////Dibuja el vector que indica la direccion del robot.Tiene modulo UNIT y parte del centro del robot.
 	}
 }
 void RobotViewGroup3::ModifyRobots(void)
